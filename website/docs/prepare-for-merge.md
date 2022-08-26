@@ -30,6 +30,8 @@ import MultidimensionalContentControlsPartial from '@site/docs/partials/_multidi
 
 ## Merge preparation checklist
 
+<div class='hide-tabs mergeprep-guide'>
+
 <div class='checklist'>
     <div class='task'>
         <div class='input-container'><input id="cl-1" type='checkbox'/><span class='done'></span></div>
@@ -73,13 +75,22 @@ import MultidimensionalContentControlsPartial from '@site/docs/partials/_multidi
             <p>Verify that you're running Prysm <code>v3.0.0</code> by issuing the following command: <code>prysm.sh beacon-chain --version</code> (Linux) <code>prysm.bat beacon-chain --version</code> (Windows).</p>
         </div>
     </div>
-    <div class='task'>
-        <div class='input-container'><input id="cl-7" type='checkbox'/><span class='done'></span></div>
-        <div class='guidance-container'>
-            <label for="cl-7">Configure JWT</label>
-            <p>If you're not using IPC to connect your beacon node and execution node, ensure that both your execution node and beacon node are configured to use JWT authentication. These instructions are included below, and are also available here: <a href='./execution-node/authentication'>Configure JWT</a></p>
-        </div>
-    </div>
+    <Tabs className="with-label hidden-in-jwt-guide" groupId="protocol" defaultValue="jwt" values={[
+        {label: 'EN-BN connection:', value: 'label'},
+        {label: 'HTTP-JWT', value: 'jwt'},
+        {label: 'IPC', value: 'ipc'}
+    ]}>
+        <TabItem value="jwt">
+            <div class='task'>
+                <div class='input-container'><input id="cl-7" type='checkbox'/><span class='done'></span></div>
+                <div class='guidance-container'>
+                    <label for="cl-7">Configure JWT</label>
+                    <p>If you're not using IPC to connect your beacon node and execution node, ensure that both your execution node and beacon node are configured to use JWT authentication. These instructions are included below, and are also available here: <a href='./execution-node/authentication'>Configure JWT</a></p>
+                </div>
+            </div>
+        </TabItem>
+        <TabItem value="ipc"></TabItem>
+    </Tabs>
     <div class='task'>
         <div class='input-container'><input id="cl-8" type='checkbox'/><span class='done'></span></div>
         <div class='guidance-container'>
@@ -113,8 +124,6 @@ import MultidimensionalContentControlsPartial from '@site/docs/partials/_multidi
 
 
 Let's step through each of these changes.
-
-<div class='hide-tabs mergeprep-guide'>
 
 <Tabs className="with-label hidden-in-jwt-guide" groupId="protocol" values={[
         {label: 'HTTP-JWT', value: 'jwt'},
