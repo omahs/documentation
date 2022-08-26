@@ -54,13 +54,24 @@ import MultidimensionalContentControlsPartial from '@site/docs/partials/_multidi
             <p>You may need to use a prerelease version of execution client software. Refer to your execution client software documentation for the latest guidance.</p>
         </div>
     </div>
-    <div class='task'>
-        <div class='input-container'><input id="cl-4" type='checkbox'/><span class='done'></span></div>
-        <div class='guidance-container'>
-            <label for="cl-4">If you're using Geth, update now</label>
-            <p>Geth 1.10.22 contains a regression. Update to <a href='https://github.com/ethereum/go-ethereum/releases'>v1.10.23+</a> if you haven't already.</p>
-        </div>
-    </div>
+    <Tabs className="with-label" groupId="execution-clients" defaultValue="geth" values={[
+            {label: 'Execution client:', value: 'label'},
+            {label: 'Geth', value: 'geth'},
+            {label: 'Nethermind', value: 'nethermind'},
+            {label: 'Besu', value: 'besu'}
+            ]}>
+        <TabItem value="geth">
+            <div class='task'>
+                <div class='input-container'><input id="cl-4" type='checkbox'/><span class='done'></span></div>
+                <div class='guidance-container'>
+                    <label for="cl-4">Update Geth now</label>
+                    <p>Geth 1.10.22 contains a regression. Update to <a href='https://github.com/ethereum/go-ethereum/releases'>v1.10.23+</a> if you haven't already.</p>
+                </div>
+            </div>
+        </TabItem>
+        <TabItem value="nethermind"></TabItem>
+        <TabItem value="besu"></TabItem>
+    </Tabs>
     <div class='task'>
         <div class='input-container'><input id="cl-5" type='checkbox'/><span class='done'></span></div>
         <div class='guidance-container'>
@@ -75,7 +86,7 @@ import MultidimensionalContentControlsPartial from '@site/docs/partials/_multidi
             <p>Verify that you're running Prysm <code>v3.0.0</code> by issuing the following command: <code>prysm.sh beacon-chain --version</code> (Linux) <code>prysm.bat beacon-chain --version</code> (Windows).</p>
         </div>
     </div>
-    <Tabs className="with-label hidden-in-jwt-guide" groupId="protocol" defaultValue="jwt" values={[
+    <Tabs className="with-label" groupId="protocol" defaultValue="jwt" values={[
         {label: 'EN-BN connection:', value: 'label'},
         {label: 'HTTP-JWT', value: 'jwt'},
         {label: 'IPC', value: 'ipc'}
